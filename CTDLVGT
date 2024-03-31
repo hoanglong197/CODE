@@ -1,8 +1,25 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdbool.h>
+
+bool is_prime(int n) {
+    if (n <= 1) return false;
+    for (int i = 2; i * i <= n; ++i) {
+        if (n % i == 0) return false; 
+    }
+}
+
+void tim_so_nguyen_to(int arr[], int size) {
+    printf("Cac phan tu la so nguyen to va vi tri cua chung:\n");
+    for (int i = 0; i < size; ++i) {
+        if (is_prime(arr[i])) {
+            printf("Phan tu %d tai vi tri %d\n", arr[i], i);
+        }
+    }
+}
 
 int main() {
     int n, x, count = 0;
-    printf("Nhap so phan tu x co trong mang: ");
+    printf("Nhap so phan tu trong mang: ");
     scanf("%d", &n); 
     printf("Nhap gia tri x: ");
     scanf("%d", &x); 
@@ -25,5 +42,6 @@ int main() {
     } else {
         printf("Gia tri x khong thuoc mang.\n");
     }
+    tim_so_nguyen_to(arr, n); 
     return 0;
 }
